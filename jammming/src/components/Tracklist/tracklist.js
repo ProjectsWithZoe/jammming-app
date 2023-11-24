@@ -10,3 +10,5 @@ const Tracklist = ({ tracks }) => {
     </div>
   );
 };
+
+export default Tracklist;
