@@ -7,6 +7,7 @@ impo;
 function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [playlist, setPlaylist] = useState([]);
 
   const handleSearch = () => {
     const mockSearchResults = [
@@ -32,19 +33,18 @@ function App() {
     setSearchResults(mockSearchResults);
   };
 
-  const mockTracks = [
-    { id: "1", name: "Song 1", artist: "Artist 1", album: "Album 1" },
-    { id: "2", name: "Song 2", artist: "Artist 2", album: "Album 2" },
-    { id: "3", name: "Song 3", artist: "Artist 3", album: "Album 3" },
-  ];
+  const addTrackToPlaylist = (track) => {
+    setPlaylist([...playlist, track]);
+  };
 
   return (
     <div className="App">
       <header className="App-header">
         <h1> Spotify Jammming App </h1>
-        <SearchBar />
+        <SearchBar onSearch={handleSearch} />
       </header>
-      <Tracklist tracks={mockTracks} />
+      <Tracklist tracks={searchResults} onAddToPlaylist={addTrackToPlaylist} />
+      <Playlist playlist={playlist} />
     </div>
   );
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./searchBar.module.css";
 
 function SearchBar() {
-  const [term, setTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handleTermChange = (e) => {
     setTerm(e.target.value);
@@ -14,10 +14,12 @@ function SearchBar() {
   return (
     <div className="SearchBar">
       <input
+        type="text"
         placeholder="Enter a song, artist or album"
+        value={searchTerm}
         onChange={handleTermChange}
       />
-      <button className="SearchButton" onClick={search}>
+      <button className="SearchButton" onSearch={search}>
         Search
       </button>
     </div>
