@@ -36,6 +36,12 @@ function App() {
   const addTrackToPlaylist = (track) => {
     setPlaylist([...playlist, track]);
   };
+  const removeTrackFromPlaylist = (track) => {
+    const updatedPlaylist = playlist.filter(
+      (playlistTrack) => playlistTrack.id !== track.id
+    );
+    setPlaylist(updatedPlaylist);
+  };
 
   return (
     <div className="App">
@@ -43,7 +49,11 @@ function App() {
         <h1> Spotify Jammming App </h1>
         <SearchBar onSearch={handleSearch} />
       </header>
-      <Tracklist tracks={searchResults} onAddToPlaylist={addTrackToPlaylist} />
+      <Tracklist
+        tracks={searchResults}
+        onAddToPlaylist={addTrackToPlaylist}
+        onRemoveFromPlaylist={removeTrackFromPlaylist}
+      />
       <Playlist playlist={playlist} />
     </div>
   );
