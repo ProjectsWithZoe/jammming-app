@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import "./App.css";
 import SearchBar from "/Users/gebruiker/jammming-app/jammming/src/components/SearchBar/searchBar.js";
 import Tracklist from "./components/Tracklist/tracklist";
-impo;
+import Playlist from "./components/Playlist/playlist";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [playlist, setPlaylist] = useState([]);
+  const [playlistName, setPlaylistName] = useState("My Playlist");
 
   const handleSearch = () => {
     const mockSearchResults = [
@@ -43,6 +44,16 @@ function App() {
     setPlaylist(updatedPlaylist);
   };
 
+  const handleRenamePlaylist = (newPlaylistName) => {
+    setPlaylistName(newPlaylistName);
+  };
+
+  const savePlaylist = () => {
+    const uriArray = playlist.map((track) => track.uri);
+    setPlaylist([]);
+    setPlaylistName("My Playlist");
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -54,7 +65,12 @@ function App() {
         onAddToPlaylist={addTrackToPlaylist}
         onRemoveFromPlaylist={removeTrackFromPlaylist}
       />
-      <Playlist playlist={playlist} />
+      <Playlist
+        playlist={playlist}
+        playlistName={playlistName}
+        onRenamePlaylist={handleRenamePlaylist}
+      />
+      <button onClick={savePlaylist}>Save</button>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import Track from "./track";
+import Track from "../Track/track";
 
 const Tracklist = ({ tracks, onAddToPlaylist, onRemoveFromPlaylist }) => {
   return (
