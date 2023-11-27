@@ -3,6 +3,7 @@ import "./App.css";
 import SearchBar from "/Users/gebruiker/jammming-app/jammming/src/components/SearchBar/searchBar.js";
 import Tracklist from "./components/Tracklist/tracklist";
 import Playlist from "./components/Playlist/playlist";
+import Spotify from "./util/spotify";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -54,6 +55,11 @@ function App() {
     setPlaylistName("My Playlist");
   };
 
+  const authenticate = () => {
+    const token = Spotify.getAccessToken();
+    console.log(token);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -71,6 +77,7 @@ function App() {
         onRenamePlaylist={handleRenamePlaylist}
       />
       <button onClick={savePlaylist}>Save</button>
+      <button onClick={authenticate}>authenticate</button>
     </div>
   );
 }

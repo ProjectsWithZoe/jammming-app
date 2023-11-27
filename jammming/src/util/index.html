@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Spotify Authorization Test</title>
+  </head>
+  <body>
+    <h1>Spotify Authorization Test</h1>
+    <button onclick="authenticate()">Authorize</button>
+    <script src="./spotify.js"></script>
+    <script>
+      async function authenticate() {
+        const token = await Spotify.getAccessToken();
+        console.log(token);
+      }
+    </script>
+  </body>
+</html>

@@ -9,7 +9,7 @@
 /coverage
 config.js
 authorize.js
-/authorization
+/config
 
 # production
 /build
