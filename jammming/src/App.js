@@ -12,27 +12,11 @@ function App() {
   const [playlistName, setPlaylistName] = useState("My Playlist");
 
   const handleSearch = () => {
-    const mockSearchResults = [
-      {
-        id: "1",
-        name: "Search Song 1",
-        artist: "Search Artist 1",
-        album: "Search Album 1",
-      },
-      {
-        id: "2",
-        name: "Search Song 2",
-        artist: "Search Artist 2",
-        album: "Search Album 2",
-      },
-      {
-        id: "3",
-        name: "Search Song 3",
-        artist: "Search Artist 3",
-        album: "Search Album 3",
-      },
-    ];
-    setSearchResults(mockSearchResults);
+    if (!searchTerm) return;
+
+    Spotify.search(searchTerm).then((results) => {
+      setSearchResults(results);
+    });
   };
 
   const addTrackToPlaylist = (track) => {
@@ -76,6 +60,7 @@ function App() {
         playlistName={playlistName}
         onRenamePlaylist={handleRenamePlaylist}
       />
+
       <button onClick={savePlaylist}>Save</button>
       <button onClick={authenticate}>authenticate</button>
     </div>
