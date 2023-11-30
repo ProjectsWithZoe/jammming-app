@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
-function SearchResults({ searchResults, searchTerm }) {
+function SearchResults({ searchResults, searchTerm, searchButtonClicked }) {
   return (
     <div>
-      <h3>Search Results for '{searchTerm}'</h3>
+      <h3>Search Results for '{searchButtonClicked ? searchTerm : ""}'</h3>
       <div>
         {searchResults.map((item, index) => (
           <div key={index}>
