@@ -48,7 +48,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1> Spotify Jammming App </h1>
+        <h1>Spotify Jammming App</h1>
         <SearchBar onSearch={handleSearch} />
       </header>
       <Tracklist
@@ -61,9 +61,8 @@ function App() {
         playlistName={playlistName}
         onRenamePlaylist={handleRenamePlaylist}
       />
-
       <button onClick={savePlaylist}>Save</button>
-      <button onClick={authenticate}>authenticate</button>
+      <button onClick={authenticate}>Authenticate</button>
     </div>
   );
 }

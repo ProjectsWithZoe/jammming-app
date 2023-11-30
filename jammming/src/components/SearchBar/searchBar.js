@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Spotify from "../../util/spotify";
+import SearchResults from "../SearchResults/searchResults";
 
 function SearchBar({ onSearch }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -23,17 +24,7 @@ function SearchBar({ onSearch }) {
         onChange={handleInputChange}
       />
       <button onClick={handleSearch}>Search</button>
-      <div>
-        <h2> Search Results for '{searchTerm}'</h2>
-        {searchResults.map((item, index) => (
-          <div key={index}>
-            <p>
-              {" "}
-              Song: {item.name} | Artist: {item.artist} | Album: {item.album}
-            </p>
-          </div>
-        ))}
-      </div>
+      <SearchResults searchResults={searchResults} searchTerm={searchTerm} />
     </div>
   );
 }
