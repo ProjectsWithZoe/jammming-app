@@ -4,6 +4,7 @@ import SearchBar from "/Users/gebruiker/jammming-app/jammming/src/components/Sea
 import Tracklist from "./components/Tracklist/tracklist";
 import Playlist from "./components/Playlist/playlist";
 import Spotify from "./util/spotify";
+import SearchResults from "./components/SearchResults/searchResults";
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);

@@ -13,7 +13,6 @@ function SearchBar({ onSearch }) {
     Spotify.search(searchTerm).then((data) => {
       setSearchResults(data);
     });
-    console.log(searchResults[2]);
   };
   return (
     <div className="SearchBar">
@@ -24,6 +23,17 @@ function SearchBar({ onSearch }) {
         onChange={handleInputChange}
       />
       <button onClick={handleSearch}>Search</button>
+      <div>
+        <h2> Search Results for '{searchTerm}'</h2>
+        {searchResults.map((item, index) => (
+          <div key={index}>
+            <p>
+              {" "}
+              Song: {item.name} | Artist: {item.artist} | Album: {item.album}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
