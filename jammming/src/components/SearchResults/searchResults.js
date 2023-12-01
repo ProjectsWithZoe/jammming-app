@@ -10,6 +10,7 @@ function SearchResults({ searchResults, searchTerm, searchButtonClicked }) {
             <p>
               {item.name} | {item.artist} | {item.album}
             </p>
+            <button>Add to playlist</button>
           </div>
         ))}
       </div>
