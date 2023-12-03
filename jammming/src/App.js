@@ -20,8 +20,9 @@ function App() {
     });
   };
 
-  const addTrackToPlaylist = (track) => {
-    setPlaylist([...playlist, track]);
+  const addToPlaylist = (item) => {
+    setPlaylist([...playlist, item]);
+    console.log("clicked");
   };
   const removeTrackFromPlaylist = (track) => {
     const updatedPlaylist = playlist.filter(
@@ -45,6 +46,11 @@ function App() {
     console.log(token);
   };
 
+  const getUserId = () => {
+    const userId = Spotify.getUserId();
+    console.log(userId);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -53,7 +59,7 @@ function App() {
       </header>
       <Tracklist
         tracks={searchResults}
-        onAddToPlaylist={addTrackToPlaylist}
+        onAddToPlaylist={addToPlaylist}
         onRemoveFromPlaylist={removeTrackFromPlaylist}
       />
       <Playlist
@@ -61,6 +67,7 @@ function App() {
         playlistName={playlistName}
         onRenamePlaylist={handleRenamePlaylist}
       />
+      <SearchResults searchResults={searchResults} searchTerm={searchTerm} />
       <button onClick={savePlaylist}>Save</button>
       <button onClick={authenticate}>Authenticate</button>
     </div>
